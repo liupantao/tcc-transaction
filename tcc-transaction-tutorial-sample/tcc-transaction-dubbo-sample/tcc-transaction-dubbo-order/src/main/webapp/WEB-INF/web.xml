@@ -5,6 +5,12 @@
 <web-app>
     <display-name>Sample Dubbo Order</display-name>
 
+    <!--自己添加-->
+    <context-param>
+        <param-name>webAppRootKey</param-name>
+        <param-value>tcc-transaction-dubbo-order</param-value>
+    </context-param>
+
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath*:config/spring/local/appcontext-*.xml,classpath:tcc-transaction.xml,classpath:tcc-transaction-dubbo.xml
@@ -21,13 +27,7 @@
         <param-value>60000</param-value>
     </context-param>
 
-    <listener>
-        <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
-    </listener>
 
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
 
     <filter>
         <filter-name>characterEncodingFilter</filter-name>
@@ -47,6 +47,14 @@
         <filter-name>characterEncodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+
+    <listener>
+        <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
 
     <servlet>
         <servlet-name>springmvc</servlet-name>
